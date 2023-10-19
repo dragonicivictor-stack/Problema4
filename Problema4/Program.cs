@@ -2,38 +2,37 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
+         static void Main(string[] args)
         {
             Console.WriteLine("Va rog sa introduceti cuvantul: ");
             string text = Console.ReadLine();
 
-            int index = 0;
-            int index2 = text.Length - 1;
-            bool estepalindrom = true;
-
-
-
-            while (index < index2)
+            if (string.IsNullOrWhiteSpace(text))
             {
-                if (text[index] != text[index2])
-                { estepalindrom = false;
-                    break;
-                }
-                    
-                index++;
-                index2--;
+                Console.WriteLine("Nu ati introdus niciun cuvant.");
+                return;
             }
-          
 
-        if(estepalindrom)
+            // Verificare dacă textul introdus este un număr
+            if (double.TryParse(text, out _))
+            {
+                Console.WriteLine("Va rog sa introduceti un cuvant, nu un numar!");
+                return;
+            }
+
+            if (StringHelper.Ispalindrom(text))
             {
                 Console.WriteLine(text + " este palindrom.");
+
             }
-        else
+            else
             {
                 Console.WriteLine(text + " nu este palindrom.");
+
             }
-        Console.ReadLine();
+
+            
+
         }
     }
 }
